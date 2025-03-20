@@ -1,0 +1,17 @@
+{
+  "name": "uapp-toolkit-list-extended-methods",
+  "version": "1.0.0",
+  "displayName": "UAppToolkit.ListExtendedMethods",
+  "description": "UAppToolkit ListExtendedMethods",
+  "unity": "2019.1",
+  "license": "MIT",
+  "dependencies": {},
+  "keywords": [
+    "scripting"
+  ],
+  "author": {
+    "name": "Surov Volodymyr",
+    "email": "vovkasu@gmail.com"
+  },
+  "samples": []  
+}  
