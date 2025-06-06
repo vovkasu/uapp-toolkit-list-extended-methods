@@ -46,5 +46,25 @@ namespace UAppToolKit
 
             return weighed.Last().Value;
         }
+
+        public static List<T> GetRandomItemsByWeight<T>(IList<T> list, int count, Func<T, int> heightGetter)
+        {
+            int allWeights = 0;
+            var weighed = new Dictionary<int, T>();
+
+            foreach (var item in list)
+            {
+                allWeights += heightGetter(item);
+                weighed.Add(allWeights, item);
+            }
+
+            var result = new List<T>();
+
+            for (int i = 0; i < count; i++)
+            {
+                result.Add(GetRandomItemsByWeight(weighed));
+            }
+            return result;
+        }
     }
 }
