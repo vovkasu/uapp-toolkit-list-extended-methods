@@ -47,7 +47,7 @@ namespace UAppToolKit
             return weighed.Last().Value;
         }
 
-        public static List<T> GetRandomItemsByWeight<T>(IList<T> list, int count, Func<T, int> heightGetter)
+        public static List<T> GetRandomItemsByWeight<T>(this IList<T> list, int count, Func<T, int> heightGetter)
         {
             int allWeights = 0;
             var weighed = new Dictionary<int, T>();
@@ -65,6 +65,21 @@ namespace UAppToolKit
                 result.Add(GetRandomItemsByWeight(weighed));
             }
             return result;
+        }
+
+        private static T GetRandomItemsByWeight<T>(Dictionary<int, T> weighed)
+        {
+            var allWeights = weighed.Max(w => w.Key);
+            var range = UnityEngine.Random.Range(0, allWeights + 1);
+            foreach (var weighedKey in weighed.Keys)
+            {
+                if (range <= weighedKey)
+                {
+                    return weighed[weighedKey];
+                }
+            }
+
+            return weighed.Last().Value;
         }
     }
 }
